@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    function validateRegister() {
+      const user = document.forms["regForm"]["userName"].value.trim();
+      const email = document.forms["regForm"]["email"].value.trim();
+      const pass = document.forms["regForm"]["password"].value.trim();
+      if (!user || !email || !pass) {
+        alert("All fields are required!");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Register</h2>
+    <form name="regForm" action="/user/register" method="post" onsubmit="return validateRegister()">
+      <input type="text" placeholder="Username" name="userName" required>
+      <input type="email" placeholder="Email" name="email" required>
+      <input type="password" placeholder="Password" name="password" required>
+      <button>Submit</button>
+    </form>
+    <p>Already have an account? <a href="/user/login">Login</a></p>
+  </div>
+</body>
+</html>

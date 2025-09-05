@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Email Verification</h2>
+    <p>Please enter the OTP sent to your email address.</p>
+
+    <% if (typeof error !== "undefined") { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (typeof success !== "undefined") { %>
+      <p class="success"><%= success %></p>
+      <a href="/user/login"><button>Go to Login</button></a>
+    <% } else { %>
+      <form name="verifyForm" action="/user/verifyEmail" method="POST">
+        <input type="text" name="verificationCode" placeholder="Enter OTP" required />
+        <button type="submit">Verify</button>
+      </form>
+    <% } %>
+  </div>
+</body>
+</html>
